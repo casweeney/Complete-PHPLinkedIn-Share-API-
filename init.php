@@ -7,8 +7,8 @@
 
 	use myPHPnotes\LinkedIn;
 
-	$app_id = "77ggd6y41q01ty";
-	$app_secret = "la6FRXPCFUGmqzHn";
+	$app_id = "YOUR_APP_ID";
+	$app_secret = "YOUR_APP_SECRET";
 	$app_callback = "http://localhost/linkedinn/callback.php";
 	$app_scopes = "r_emailaddress r_liteprofile w_member_social";
 
