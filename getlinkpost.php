@@ -1,8 +1,6 @@
 <?php
 	require "init.php";
 	$profile = $linkedin->getPerson($_SESSION['linkedInAccessToken']);
-	// var_dump($profile);
-	// die;
 ?>
 
 <!DOCTYPE html>
@@ -12,15 +10,16 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 		<style type="text/css">
 			body, html {
-				height: 100%;
+				/*height: 100%;*/
 			}
 
 			.bg {
 				background-image: url('images/bg.jpg');
-				height: 100%;
+				/*height: 100%;*/
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: cover;
+				padding-bottom: 5%;
 			}
 		</style>
 	</head>
@@ -58,14 +57,24 @@
 							</div>
 						</div>
 						<hr>
-						<h5>Share Post</h5>
-	                    <form action="redirector.php">
-	                        <select name="type" id="type" class="form-control" required="required">
-	                            <option value="">Select Post Type</option>
-	                            <option value="text">Share Text Post</option>
-	                            <option value="link">Share Article/Link Post</option>
-	                            <option value="image">Share Image Post</option>
-	                            <option value="images">Share Multiple Images</option>
+						<h5>Share Article/Link Post</h5>
+	                    <form action="postlinkpost.php" required="required" method="post">
+	                    	<input type="hidden" name="profile" value="<?php echo $profile->id; ?>">
+	                        <textarea name="content" id="content" cols="30" rows="10" style="resize: none;" placeholder="What's on your mind?" class="form-control"></textarea>
+	                        <br>
+	                        <label for="">Link Title</label>
+	                        <input type="text" required="required" class="form-control" name="link_title">
+	                        <br>
+	                        <label for="">Link Description</label>
+	                        <input type="text" required="required" class="form-control" name="link_desc">
+	                        <br>
+	                        <label for="">Link URL</label>
+	                        <input type="text" required="required" class="form-control" name="link_url">
+	                        <br>
+	                        <label for="">Privacy</label>
+	                        <select class="form-control" name="privacy" id="privacy">
+	                        	<option value="PUBLIC">Public</option>
+	                        	<option value="CONNECTIONS">Connections Only</option>
 	                        </select>
 	                        <br>
 	                        <input type="submit" class="btn btn-danger btn-block" value="Proceed">
